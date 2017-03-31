@@ -138,3 +138,25 @@ virtualenvwrapper-win
     ]   
     
     ```
+ ### 7.Django ORM 数据库操作
+ * models.py
+    ```angular2html
+    class UserMessage(models.Model):
+        object_id = models.CharField(max_length=50,default="",primary_key=True)
+        name = models.CharField(max_length=20,null=True,blank=True,verbose_name=u'用户名')
+        email = models.EmailField(verbose_name=u'邮箱')
+        address = models.CharField(max_length=100,verbose_name=u"联系地址")
+        message = models.CharField(max_length=500,verbose_name=u'留言信息')
+
+    class Meta:
+            verbose_name = u'用户留言信息'
+            verbose_name_plural= verbose_name
+    ```
+    
+ * 注册app  settings.py
+    ```angular2html
+    
+    INSTALLED_APPS = [
+        'message'
+    ]
+    ```
