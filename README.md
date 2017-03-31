@@ -38,9 +38,9 @@ virtualenvwrapper-win
 
 * 创建虚拟环境,并自动进入
 
-    `
+    ```
     mkvirtualenv testvir2
-    `
+    ```
 
 * 其他操作
 
@@ -57,9 +57,9 @@ virtualenvwrapper-win
 
 * 安装Django1.9.8
 
-    `
+    ```
     pip install django==1.9.8
-    `
+    ```
 
 
 ### 4. mysql 新建数据库
@@ -87,4 +87,54 @@ virtualenvwrapper-win
  
     再到setting 配置路径：`????`
  
+ ### 6. 实例message
+ 
+ * 安装 MySQLdb ：
+    ```
+    http://www.lfd.uci.edu/~gohlke/pythonlibs/#mysql-python
+    ```
+    
+ * 进入虚拟环境安装 
+    ```
+    pip install MySQL_python-1.2.5-cp27-none-win_amd64.whl
+    ```
+ 
+ * 配置DATABASES :
+ 
+      ```    
+      'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'testdjango',
+            'USER':'xkn',
+            'PASSWORD':'admin',
+            'HOST':'127.0.0.1'
+        }
+        ```
+ 
+ * 配置URL——urls.py  
    
+   ```
+   from message.views import getform
+   
+   url(r'^form/$',getform)
+   ```
+ 
+ * 配置Views.py 
+    ```
+    def getform(request):
+        return render(request,'message_form.html')
+    ```
+   
+ * 配置 Settings.py
+    ```
+    TEMPLATES = [
+    {
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        }
+    ]
+    
+    STATICFILES_DIRS = [
+	os.path.join(BASE_DIR,'static')
+    ]   
+    
+    ```
